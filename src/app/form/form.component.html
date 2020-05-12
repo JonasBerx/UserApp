@@ -1,0 +1,11 @@
+<form [formGroup]="registerForm" style="margin-left: 15%; margin-right: 15%" (ngSubmit)="onSubmit(registerForm.value)">
+  Firstname: <input type="text" class="form-control" formControlName="firstname" >
+  Lastname: <input type="text"  class="form-control" formControlName="lastname" >
+  Email: <input type="text"  class="form-control" formControlName="email" >
+  Sex: <input type="text" class="form-control" formControlName="sex" >
+  Age: <input type="number"  class="form-control" formControlName="age" >
+  <br>
+  Password: <input type="password" class="form-control" formControlName="password" >
+  <input class="btn btn-primary" type="submit">
+</form>
+
