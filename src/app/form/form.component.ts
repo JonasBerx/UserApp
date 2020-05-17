@@ -18,11 +18,14 @@ export class FormComponent {
     password: new FormControl('')
   });
 
+  users: User[];
+
   constructor( private userService: UserService) {}
 
 
   onSubmit(userdata){
-    this.userService.createUser(userdata);
+    this.userService.createUser(userdata).subscribe(user => {
+      this.users.push(user); });
     this.registerForm.reset();
   }
 }

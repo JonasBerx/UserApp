@@ -10,7 +10,7 @@ export class User {
     this.status = status;
     this.password = password;
   }
-
+  id: number;
   firstname: string;
   lastname: string;
   email: string;
@@ -20,6 +20,6 @@ export class User {
   status: string;
 
   toString(): string {
-    return this.firstname + ' ' + this.lastname + ' password: ' + this.password
+    return this.firstname + ' ' + this.lastname + ' password: ' + this.password;
   }
 }
