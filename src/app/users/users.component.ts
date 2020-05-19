@@ -27,7 +27,7 @@ import { Location } from '@angular/common';
           <td>{{user.firstname}}</td>
           <td>{{user.lastname}}</td>
           <td>{{user.email}}</td>
-          <td>Status:{{user.status}}</td>
+          <td>{{user.status}}</td>
         </tr>
       </tbody>
     </table>
@@ -51,7 +51,8 @@ export class UsersComponent implements OnInit {
     this.user = user;
   }
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private location: Location) {
+
   }
 
   getUsers(): void {
@@ -59,9 +60,10 @@ export class UsersComponent implements OnInit {
   }
 
   update(user: User): void {
-    this.userService.updateUser(user);
-  }
+    this.userService.updateUser(user).subscribe(() => this.user.status = user.status);
 
+    console.log('User updated, new status = ' + user.status);
+  }
   ngOnInit(): void {
     this.getUsers();
   }

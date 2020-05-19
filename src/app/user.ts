@@ -19,6 +19,7 @@ export class User {
   password: string;
   status: string;
 
+
   toString(): string {
     return this.firstname + ' ' + this.lastname + ' password: ' + this.password;
   }

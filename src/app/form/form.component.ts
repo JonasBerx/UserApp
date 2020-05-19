@@ -24,8 +24,7 @@ export class FormComponent {
 
 
   onSubmit(userdata){
-    this.userService.createUser(userdata).subscribe(user => {
-      this.users.push(user); });
+    this.userService.createUser(userdata).subscribe(user => this.users.push(user));
     this.registerForm.reset();
   }
 }
