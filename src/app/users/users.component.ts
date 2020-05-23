@@ -56,12 +56,12 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUsers().subscribe(users => this.users = users);
+    // this.userService.getJsonUsers().subscribe(users => this.users = users);
+    timer(0, 10000).subscribe( data => this.userService.getJsonUsers().subscribe(users => this.users = users));
   }
 
   update(user: User): void {
     this.userService.updateUser(user).subscribe(() => this.user.status = user.status);
-
     console.log('User updated, new status = ' + user.status);
   }
   ngOnInit(): void {

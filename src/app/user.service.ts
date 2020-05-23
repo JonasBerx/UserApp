@@ -10,21 +10,26 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
-  private usersUrl = 'api/users';
-
+  private usersUrl = 'http://localhost:8080/Controller?action=GetUsers';
+  private updateUserUrl = 'http://localhost:8080/Controller?action=UpdateUser&id=';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-
   constructor(private router: Router , private http: HttpClient) {
   }
+  users: object;
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+  getJsonUsers(): Observable<any> {
+
+    return this.http.get<string[]>(this.usersUrl);
   }
 
   updateUser(user: User): Observable<User> {
-    return this.http.put<User>(this.usersUrl, user, this.httpOptions);
+    this.updateUserUrl = 'http://localhost:8080/Controller?action=UpdateUser&id=';
+    this.updateUserUrl += user.email;
+    console.log(this.updateUserUrl);
+    console.log(user);
+    return this.http.post<User>(this.updateUserUrl, user.status, this.httpOptions);
   }
 
   createUser(userdata): Observable<User> {
